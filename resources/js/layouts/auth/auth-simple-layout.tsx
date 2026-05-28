@@ -1,6 +1,6 @@
-import AppLogoIcon from '@/components/app-logo-icon';
 import { home } from '@/routes';
 import { Link } from '@inertiajs/react';
+import { Building2 } from 'lucide-react';
 import { type PropsWithChildren } from 'react';
 
 interface AuthLayoutProps {
@@ -15,28 +15,40 @@ export default function AuthSimpleLayout({
     description,
 }: PropsWithChildren<AuthLayoutProps>) {
     return (
-        <div className="flex min-h-svh flex-col items-center justify-center gap-6 bg-background p-6 md:p-10">
-            <div className="w-full max-w-sm">
-                <div className="flex flex-col gap-8">
-                    <div className="flex flex-col items-center gap-4">
-                        <Link
-                            href={home()}
-                            className="flex flex-col items-center gap-2 font-medium"
-                        >
-                            <div className="mb-1 flex h-9 w-9 items-center justify-center rounded-md">
-                                <AppLogoIcon className="size-9 fill-current text-[var(--foreground)] dark:text-white" />
-                            </div>
-                            <span className="sr-only">{title}</span>
-                        </Link>
-
-                        <div className="space-y-2 text-center">
-                            <h1 className="text-xl font-medium">{title}</h1>
-                            <p className="text-center text-sm text-muted-foreground">
+        <div className="min-h-screen antialiased" style={{
+            background: 'linear-gradient(135deg, #3b82f6 0%, #1e40af 100%)'
+        }}>
+            <div className="flex min-h-svh flex-col items-center justify-center gap-6 p-6 md:p-10">
+                <div className="flex w-full max-w-md flex-col gap-6">
+                    <Link
+                        href={home()}
+                        className="flex flex-col items-center gap-2 font-medium"
+                    >
+                        <div className="flex h-12 w-12 mb-2 items-center justify-center" style={{
+                            background: 'white',
+                            borderRadius: '12px'
+                        }}>
+                            <Building2 className="h-8 w-8 text-blue-600" />
+                        </div>
+                        <span className="text-2xl font-bold text-white">BIZ</span>
+                    </Link>
+                    
+                    <div className="rounded-2xl p-8" style={{
+                        background: 'white',
+                        border: '1px solid #e5e7eb',
+                        boxShadow: '0 20px 40px rgba(0, 0, 0, 0.1)'
+                    }}>
+                        <div className="text-center mb-4">
+                            <h1 className="text-3xl font-bold text-black mb-2">
+                                {title}
+                            </h1>
+                            <p className="text-black">
                                 {description}
                             </p>
                         </div>
+                        
+                        {children}
                     </div>
-                    {children}
                 </div>
             </div>
         </div>
